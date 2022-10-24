@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { Button } from 'react-bootstrap';
+
 import Navigationbar from './components/Navigationbar/Navigationbar';
 
 function App() {
