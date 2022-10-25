@@ -9,7 +9,10 @@
     font-family: 'Black Ops One', cursive;
 }
 
-.active{
-    background-color: whitesmoke;
+.nav-item{
+    text-decoration: none;
 }
 
+.nav-item:hover{
+    border-bottom: 3px solid whitesmoke;
+}

@@ -4,7 +4,7 @@ import './Navigationbar.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 
@@ -17,20 +17,14 @@ const Navigationbar = () => {
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="ms-auto">
-                                    {/* <Link to="/">Home</Link>
-                                    <Link to="/courses">Courses</Link>
-                                    <Link to="/faq">FAQ</Link>
-                                    <Link to="/blog">Blog</Link>
-                                    <Link to="/login">Login</Link> */}
+                                    <NavLink className={`ms-5 fw-semibold text-light nav-item`} to="/">Home</NavLink>
+                                    <NavLink className="ms-5 fw-semibold text-light nav-item" to="/courses">Courses</NavLink>
+                                    <NavLink className="ms-5 fw-semibold text-light nav-item" to="/faq">FAQ</NavLink>
+                                    <NavLink className="ms-5 fw-semibold text-light nav-item" to="/blog">Blog</NavLink>
+                                    <NavLink className="ms-5 fw-semibold text-light nav-item" to="/login">Login</NavLink>
 
-
-                                    <Nav.Link href="/" className='ms-3 fw-semibold'>Home</Nav.Link>
-                                    <Nav.Link href="/courses" className='ms-3 fw-semibold'>Courses</Nav.Link>
-                                    <Nav.Link href="/faq" className='ms-3 fw-semibold'>FAQ</Nav.Link>
-                                    <Nav.Link href="/blog" className='ms-3 fw-semibold'>Blog</Nav.Link>
-                                    <Nav.Link href="/login" className='ms-3 fw-semibold'>Login</Nav.Link>  
                                    {/* Ekhane User Login korar por Login er pashe user profile pic dekha jabe & login tar poriborte Logout dekhabe */}
-                                   <Nav.Link href="/login" className='border border-4 border-secondary rounded-circle px-3 ms-5'>pic</Nav.Link> 
+                                   {/* <Nav.Link href="/login" className='border border-4 border-secondary rounded-circle px-3 ms-5'>pic</Nav.Link>  */}
                                 </Nav>
                                 </Navbar.Collapse>
                             </Container>
