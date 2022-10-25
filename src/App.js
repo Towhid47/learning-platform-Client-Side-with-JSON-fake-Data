@@ -1,11 +1,11 @@
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
-
-import Navigationbar from './components/Navigationbar/Navigationbar';
+import { router } from './routes/routes';
 
 function App() {
   return (
     <div className="App">
-       <Navigationbar></Navigationbar>
+       <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
