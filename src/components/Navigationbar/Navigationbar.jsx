@@ -17,18 +17,20 @@ const Navigationbar = () => {
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="ms-auto">
-                                    {/* <NavLink to="/">Home</NavLink>
-                                    <NavLink to="/courses">Courses</NavLink>
-                                    <NavLink to="/faq">FAQ</NavLink>
-                                    <NavLink to="/blog">Blog</NavLink>
-                                    <NavLink to="/login">Login</NavLink> */}
+                                    {/* <Link to="/">Home</Link>
+                                    <Link to="/courses">Courses</Link>
+                                    <Link to="/faq">FAQ</Link>
+                                    <Link to="/blog">Blog</Link>
+                                    <Link to="/login">Login</Link> */}
 
 
-                                    <Nav.Link href="/">Home</Nav.Link>
-                                    <Nav.Link href="/courses">Courses</Nav.Link>
-                                    <Nav.Link href="/faq">FAQ</Nav.Link>
-                                    <Nav.Link href="/blog">Blog</Nav.Link>
-                                    <Nav.Link href="/login">Login</Nav.Link>                                                        
+                                    <Nav.Link href="/" className='ms-3 fw-semibold'>Home</Nav.Link>
+                                    <Nav.Link href="/courses" className='ms-3 fw-semibold'>Courses</Nav.Link>
+                                    <Nav.Link href="/faq" className='ms-3 fw-semibold'>FAQ</Nav.Link>
+                                    <Nav.Link href="/blog" className='ms-3 fw-semibold'>Blog</Nav.Link>
+                                    <Nav.Link href="/login" className='ms-3 fw-semibold'>Login</Nav.Link>  
+                                   {/* Ekhane User Login korar por Login er pashe user profile pic dekha jabe & login tar poriborte Logout dekhabe */}
+                                   <Nav.Link href="/login" className='border border-4 border-secondary rounded-circle px-3 ms-5'>pic</Nav.Link> 
                                 </Nav>
                                 </Navbar.Collapse>
                             </Container>
