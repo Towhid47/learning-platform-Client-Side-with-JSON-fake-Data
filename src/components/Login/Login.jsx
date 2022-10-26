@@ -1,14 +1,20 @@
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth.context';
 //import Font Awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from  '@fortawesome/free-brands-svg-icons';
 import { faGithub } from  '@fortawesome/free-brands-svg-icons';
+//import Sweet Alert
+import Swal from 'sweetalert2';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 const Login = () => {
+
+    const navigate = useNavigate();
 
     const { signIn, resetPassword , signInWithGoogle } = useContext(AuthContext);
 
@@ -20,7 +26,12 @@ const Login = () => {
 
         signIn(email, password)
         .then(result => {
-            
+            Swal.fire(
+                'Login Success !'
+              )  
+        })
+        .catch(error => {
+            toast.error("This Account isn't available. Please, Create your Account First");
         })
     
 
@@ -45,6 +56,17 @@ const handleGoogleSignin = () =>{
 
     return (
         <div className='container d-flex flex-column justify-content-center w-100 align-items-center'>
+              <ToastContainer  className="toast-position"
+                                    position="top-center"
+                                    autoClose={10000}
+                                    hideProgressBar={false}
+                                    newestOnTop={false}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnFocusLoss
+                                    draggable
+                                    pauseOnHover
+                                    theme="dark"></ToastContainer>
                 <div>
                     <h1 className='fw-bold text-center'>Log in </h1>
                 </div>
@@ -54,7 +76,7 @@ const handleGoogleSignin = () =>{
                         <Form onSubmit={handleSubmit} className='w-100'>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label className='fw-semibold fs-3'>Email address</Form.Label>
-                                    <Form.Control type="email" placeholder="Enter email" className='border border-dark border-2' />
+                                    <Form.Control name="email" type="email" placeholder="Enter email" className='border border-dark border-2' />
                                     <Form.Text className="text-muted">
                                   
                                     </Form.Text>
@@ -62,7 +84,7 @@ const handleGoogleSignin = () =>{
 
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <Form.Label className='fw-semibold fs-3'>Password</Form.Label>
-                                    <Form.Control type="password" placeholder="Password" className='border border-dark border-2' />
+                                    <Form.Control name="password" type="password" placeholder="Password" className='border border-dark border-2' />
                                 </Form.Group>
                                
 

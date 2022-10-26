@@ -47,7 +47,7 @@ const Navigationbar = () => {
                                  {/* Conditional Rendering For Login & Logout Toggle */}
                                     {(user?.email)  ? 
                                        <> <NavLink className="m-4 fw-semibold text-light nav-item"><Button onClick={handleLogout} className='btn-light'>Logout <FontAwesomeIcon icon={faRightFromBracket} /></Button></NavLink>
-                                           <Nav.Link href="" className='border border-4 border-secondary rounded px-5 ms-5'><img src="{}" alt=""></img></Nav.Link>  
+                                           <Link to="" title={user.displayName} className='border border-4 border-secondary rounded ms-5'><img className='w-100' src={user.photoURL} alt=""></img></Link>  
                                        </>  
                                           :  
                                        <><NavLink className="m-4 fw-semibold text-light nav-item" to="/login">Login</NavLink></>

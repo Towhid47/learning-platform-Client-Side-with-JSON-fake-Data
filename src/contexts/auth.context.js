@@ -29,7 +29,7 @@ const createUser = (email, password) =>{
 
 /////// Update Name /////////
 const updateName = (name) =>{
-return updateProfile(auth.currentUser, { displayName: name }); 
+return updateProfile(auth.currentUser, { displayName: name   }); 
 }
 
 /////// Email Verify ///////
