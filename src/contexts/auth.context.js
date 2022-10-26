@@ -28,11 +28,6 @@ const googleProvider = new GoogleAuthProvider() ;
 // }
 
 
-//////// Google Sign In ///////
-
-const signInWithGoogle = () =>{
-    return signInWithPopup(auth, googleProvider)
-}
 
 
 
@@ -59,6 +54,11 @@ const verifyEmail = () =>{
  return  sendEmailVerification(auth.currentUser)
 }
 
+//////// Google Sign In ///////
+
+const signInWithGoogle = () =>{
+    return signInWithPopup(auth, googleProvider)
+}
 
 
 

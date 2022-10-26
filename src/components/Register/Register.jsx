@@ -9,6 +9,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../contexts/auth.context';
 
+//import Font Awesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from  '@fortawesome/free-brands-svg-icons';
+import { faGithub } from  '@fortawesome/free-brands-svg-icons';
+
+
+
 
 
 const Register = () => {
@@ -101,7 +108,7 @@ const Register = () => {
 ////////// Google Sign In //////////////////////////////////////
 
 const handleGoogleSignin = () =>{
-    signInWithGoogle
+    signInWithGoogle()
     .then(result => {
          console.log(result.user);
     })
@@ -113,7 +120,7 @@ const handleGoogleSignin = () =>{
 
     return (
         <div>
-               <div className='container d-flex flex-column justify-content-center w-100 align-items-center'>
+               <div className='container d-flex flex-column justify-content-center w-100 align-items-center my-5'>
                 <div>
                     <h1 className='fw-bold text-center'>Register</h1>
                     <p className='fw-bold text-center'>Create Your New Account to get our Latest updates</p>
@@ -163,9 +170,10 @@ const handleGoogleSignin = () =>{
                                     SIGN UP
                                 </Button>
 
-                                <div className='my-4'>
-                                    <p className='text-center'>----Signup with social Accounts----</p>
-
+                                <div className='my-4 text-center'>
+                                    <p>----Signup with social Accounts----</p>
+                                    <Button onClick={handleGoogleSignin} className='btn btn-dark ms-3' title="Signup with Google"><FontAwesomeIcon icon={faGoogle} className='fs-4'/></Button> {"  "}
+                                    <Button className='btn btn-dark ms-3' title="Signup with Github"><FontAwesomeIcon icon={faGithub} className='fs-3'/></Button>
                                 </div>
                         </Form>
                 </div>
