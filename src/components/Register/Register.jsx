@@ -100,12 +100,12 @@ const Register = () => {
 
 ////////// Google Sign In //////////////////////////////////////
 
-// const handleGoogleSignin = () =>{
-//     signInWithGoogle
-//     .then(result => {
-
-//     })
-// }
+const handleGoogleSignin = () =>{
+    signInWithGoogle
+    .then(result => {
+         console.log(result.user);
+    })
+}
 
 
 
@@ -162,6 +162,11 @@ const Register = () => {
                                 <Button variant="dark" onClick={handleSignUp} type="submit" className='w-100'>
                                     SIGN UP
                                 </Button>
+
+                                <div className='my-4'>
+                                    <p className='text-center'>----Signup with social Accounts----</p>
+
+                                </div>
                         </Form>
                 </div>
            
