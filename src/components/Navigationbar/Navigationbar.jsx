@@ -17,11 +17,11 @@ const Navigationbar = () => {
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="ms-auto">
-                                    <NavLink className={`ms-5 fw-semibold text-light nav-item`} to="/">Home</NavLink>
-                                    <NavLink className="ms-5 fw-semibold text-light nav-item" to="/courses">Courses</NavLink>
-                                    <NavLink className="ms-5 fw-semibold text-light nav-item" to="/faq">FAQ</NavLink>
-                                    <NavLink className="ms-5 fw-semibold text-light nav-item" to="/blog">Blog</NavLink>
-                                    <NavLink className="ms-5 fw-semibold text-light nav-item" to="/login">Login</NavLink>
+                                    <NavLink className={`m-4 fw-semibold text-light nav-item`} to="/">Home</NavLink>
+                                    <NavLink className="m-4 fw-semibold text-light nav-item" to="/courses">Courses</NavLink>
+                                    <NavLink className="m-4 fw-semibold text-light nav-item" to="/faq">FAQ</NavLink>
+                                    <NavLink className="m-4 fw-semibold text-light nav-item" to="/blog">Blog</NavLink>
+                                    <NavLink className="m-4 fw-semibold text-light nav-item" to="/login">Login</NavLink>
 
                                    {/* Ekhane User Login korar por Login er pashe user profile pic dekha jabe & login tar poriborte Logout dekhabe */}
                                    {/* <Nav.Link href="/login" className='border border-4 border-secondary rounded-circle px-3 ms-5'>pic</Nav.Link>  */}
