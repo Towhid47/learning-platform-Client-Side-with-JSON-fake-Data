@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 const Home = () => {
+
     return (
         <div>
             <div className='d-flex flex-column flex-lg-row align-items-lg-center'>
