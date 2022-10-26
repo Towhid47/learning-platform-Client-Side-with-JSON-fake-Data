@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+//import Toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -25,6 +28,7 @@ const Register = () => {
 
         if(!isValidEmail){
             setError("invalid Email. Please Enter Your valid Email.");
+            toast.error("invalid Email!");
             return;
         }
         else{
@@ -45,6 +49,17 @@ const Register = () => {
 
                 <div className='ms-5 w-50 mt-4 p-5  border border-3 border-dark rounded-4'>
                     <p className='text-center text-danger'>{error}</p>
+                    <ToastContainer  className="toast-position"
+                                    position="top-center"
+                                    autoClose={10000}
+                                    hideProgressBar={false}
+                                    newestOnTop={false}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnFocusLoss
+                                    draggable
+                                    pauseOnHover
+                                    theme="dark"></ToastContainer>
                                 {/* ///////// LogIn Form ///////////// */}
                         <Form className='w-100 mt-4'>
                                 <Form.Group className="mb-3" controlId="">
