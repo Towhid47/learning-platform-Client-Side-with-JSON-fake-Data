@@ -1,9 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth.context';
+//import Font Awesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from  '@fortawesome/free-brands-svg-icons';
+import { faGithub } from  '@fortawesome/free-brands-svg-icons';
 
 const Login = () => {
+
+    const { signIn, resetPassword , signInWithGoogle } = useContext(AuthContext);
+
+    const handleSubmit = event =>{
+    
+        event.preventDefault();
+        const email  =  event.target.email.value ;
+        const password = event.target.password.value ;
+
+        signIn(email, password)
+        .then(result => {
+            
+        })
+    
+
+    
+    } 
+
+
+///////////// Google Sign In //////////////////////////////////////
+
+const handleGoogleSignin = () =>{
+    signInWithGoogle()
+    .then(result => {
+         console.log(result.user);
+    })
+}
+
+
+
+
+
+
+
     return (
         <div className='container d-flex flex-column justify-content-center w-100 align-items-center'>
                 <div>
@@ -12,12 +51,12 @@ const Login = () => {
 
                 <div className='ms-5 w-50 mt-4 p-5 border border-3 border-dark rounded-4'>
                                 {/* ///////// LogIn Form ///////////// */}
-                        <Form className='w-100'>
+                        <Form onSubmit={handleSubmit} className='w-100'>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label className='fw-semibold fs-3'>Email address</Form.Label>
                                     <Form.Control type="email" placeholder="Enter email" className='border border-dark border-2' />
                                     <Form.Text className="text-muted">
-                                    We'll never share your email with anyone else.
+                                  
                                     </Form.Text>
                                 </Form.Group>
 
@@ -25,15 +64,22 @@ const Login = () => {
                                     <Form.Label className='fw-semibold fs-3'>Password</Form.Label>
                                     <Form.Control type="password" placeholder="Password" className='border border-dark border-2' />
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                    <Form.Check type="checkbox" label="Check me out" />
-                                </Form.Group> 
+                               
 
                                 <p className='my-2 fw-semibold'>Don't Have an Account ? <span><Link to='../register'> Create a new Account </Link></span></p>   
 
                                 <Button variant="dark" type="submit" className='w-100'>
                                     SIGN IN
                                 </Button>
+
+                                <div onClick={resetPassword} className='my-4'>
+                                    <p className='text-primary'>Did you Forget your Password ?</p>
+                                </div>
+                                <div className='my-4 text-center'>
+                                    <p>----Signin with social Accounts----</p>
+                                    <Button onClick={handleGoogleSignin} className='btn btn-dark ms-3' title="Signin with Google"><FontAwesomeIcon icon={faGoogle} className='fs-4'/></Button> {"  "}
+                                    <Button className='btn btn-dark ms-3' title="Signin with Github"><FontAwesomeIcon icon={faGithub} className='fs-3'/></Button>
+                                </div>
                         </Form>
                 </div>
            

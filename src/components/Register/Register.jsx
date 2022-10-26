@@ -1,4 +1,3 @@
-import { updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -159,9 +158,6 @@ const handleGoogleSignin = () =>{
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <Form.Label className='fw-semibold fs-3'>Password</Form.Label>
                                     <Form.Control type="password" onBlur={handlePassword} placeholder="Please Give a Strong Password" className='border border-dark border-2' required/>
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                    <Form.Check type="checkbox" label="Check me out" />
                                 </Form.Group>
 
                                 <p className='my-2 fw-semibold'>Already Have an Account ? <span><Link to='../login'> LOG IN </Link></span></p>

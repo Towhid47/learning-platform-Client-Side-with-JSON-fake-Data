@@ -6,9 +6,31 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/auth.context';
+import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+
+
 
 
 const Navigationbar = () => {
+
+      const { user , logout } = useContext(AuthContext);
+
+      const handleLogout = () =>{
+        logout()
+        .then(toast.warning("User Logged Out !"))
+        .catch(error=> console.log(error))
+      }
+
+      console.log(user);
+
+
+
+
+
     return (
         <div>
                <Navbar bg="black" variant='dark' expand="lg">
@@ -21,10 +43,18 @@ const Navigationbar = () => {
                                     <NavLink className="m-4 fw-semibold text-light nav-item" to="/courses">Courses</NavLink>
                                     <NavLink className="m-4 fw-semibold text-light nav-item" to="/faq">FAQ</NavLink>
                                     <NavLink className="m-4 fw-semibold text-light nav-item" to="/blog">Blog</NavLink>
-                                    <NavLink className="m-4 fw-semibold text-light nav-item" to="/login">Login</NavLink>
 
-                                   {/* Ekhane User Login korar por Login er pashe user profile pic dekha jabe & login tar poriborte Logout dekhabe */}
-                                   {/* <Nav.Link href="/login" className='border border-4 border-secondary rounded-circle px-3 ms-5'>pic</Nav.Link>  */}
+                                 {/* Conditional Rendering For Login & Logout Toggle */}
+                                    {(user?.email)  ? 
+                                       <> <NavLink className="m-4 fw-semibold text-light nav-item"><Button onClick={handleLogout} className='btn-light'>Logout <FontAwesomeIcon icon={faRightFromBracket} /></Button></NavLink>
+                                           <Nav.Link href="" className='border border-4 border-secondary rounded px-5 ms-5'><img src="{}" alt=""></img></Nav.Link>  
+                                       </>  
+                                          :  
+                                       <><NavLink className="m-4 fw-semibold text-light nav-item" to="/login">Login</NavLink></>
+                                 }
+
+                                    
+                                   
                                 </Nav>
                                 </Navbar.Collapse>
                             </Container>
