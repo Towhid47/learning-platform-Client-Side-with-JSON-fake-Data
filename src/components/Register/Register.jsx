@@ -12,7 +12,7 @@ const Register = () => {
 
     const [name , setName] = useState("");
      const [email , setEmail] = useState("");
-    // const [password , setPassword] = useState("");
+     const [password , setPassword] = useState("");
      const [error , setError] = useState("");
 
    const handleName= (e) =>{
@@ -20,6 +20,7 @@ const Register = () => {
         setName(name);
     }
 
+    ///// Get the Email from the form email input box /////////////
     const handleEmail = (e) =>{
         const email = e.target.value;
 
@@ -35,7 +36,26 @@ const Register = () => {
             setEmail(email);
             setError("");
         }
+    };
+
+
+    ///// Get the password from the password input box //////////////
+    const handlePassword = (e) =>{
+      const password = e.target.value;
+       
+      ///////// Password Validation //////////////////
+      if(password.length < 8){
+        setError("Password should be at least 8 characters");
+        return;
+      }  
+      if( ! (/(?=.*\d)/.test(password)) ){
+        setError("Password should have at least one digit");
+        return;
+      }
+      setPassword(password);
     }
+
+
 
  
 
@@ -79,7 +99,7 @@ const Register = () => {
 
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <Form.Label className='fw-semibold fs-3'>Password</Form.Label>
-                                    <Form.Control type="password" placeholder="Password" className='border border-dark border-2' required/>
+                                    <Form.Control type="password" onBlur={handlePassword} placeholder="Please Give a Strong Password" className='border border-dark border-2' required/>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                                     <Form.Check type="checkbox" label="Check me out" />
