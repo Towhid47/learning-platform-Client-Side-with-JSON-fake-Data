@@ -1,10 +1,13 @@
+import { updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 //import Toast
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../../contexts/auth.context';
 
 
 
@@ -15,6 +18,11 @@ const Register = () => {
      const [password , setPassword] = useState("");
      const [error , setError] = useState("");
 
+     //////// Get Data from the context API and use it.
+     const { createUser, updateName , verifyEmail , signInWithGoogle } = useContext(AuthContext);
+
+
+   ///// Get the user Name from the name input box.
    const handleName= (e) =>{
       const name = (e.target.value);
         setName(name);
@@ -54,6 +62,50 @@ const Register = () => {
       }
       setPassword(password);
     }
+
+
+    ////// Handel Sign Up for Creating a New user Account /////////
+    const handleSignUp = (e) =>{
+        e.preventDefault();
+        //////1. Create New User Account
+        createUser(email, password)     //Calling the function which is in Context API (auth.context.js)
+        .then(result =>{
+            console.log(result.user);
+            toast.success("User Created Successfully");
+
+            //////2. Update Name //////////
+            updateName(name)
+                .then(()=>{
+                     toast("Name Updated");   
+                })
+                 /////3. Email Verification ////////
+                 verifyEmail()
+                 .then(()=>{
+                    toast("Please Check Your Email for verification link");
+                 })
+                 .catch(error => {
+                    setError(error.message);
+                    toast.error(error.message);
+                 })
+            })
+             .catch(error => {
+                toast.error(error.message);
+             })    
+                
+        .catch(error=>{
+            setError(error.message)
+        })
+    };
+
+
+////////// Google Sign In //////////////////////////////////////
+
+// const handleGoogleSignin = () =>{
+//     signInWithGoogle
+//     .then(result => {
+
+//     })
+// }
 
 
 
@@ -107,7 +159,7 @@ const Register = () => {
 
                                 <p className='my-2 fw-semibold'>Already Have an Account ? <span><Link to='../login'> LOG IN </Link></span></p>
 
-                                <Button variant="dark" type="submit" className='w-100'>
+                                <Button variant="dark" onClick={handleSignUp} type="submit" className='w-100'>
                                     SIGN UP
                                 </Button>
                         </Form>
