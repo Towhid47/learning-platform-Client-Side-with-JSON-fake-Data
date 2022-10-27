@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Link } from "react-router-dom";
 import Home from "../components/Home/Home";
 import Root from "../layouts/Root/Root";
 import Courses from "../components/Courses/Courses";
@@ -7,6 +7,7 @@ import Login from "../components/Login/Login";
 import Register from '../components/Register/Register';
 import CourseCards from "../components/Courses/CourseCards/CourseCards";
 import CourseDetails from "../components/Courses/CourseDetails/CourseDetails";
+import { Button } from "react-bootstrap";
 
 export const router = createBrowserRouter([
     {
@@ -18,7 +19,13 @@ export const router = createBrowserRouter([
             {path:'/course/:id', element:<CourseDetails></CourseDetails> , loader:({params})=> fetch(`http://localhost:5000/course/${params.id}`)},
             {path:'/blog' , element:<Blog></Blog>},
             {path:'/login' , element:<Login></Login>},
-            {path:'/register', element:<Register></Register>}
+            {path:'/register', element:<Register></Register>},
+            { path: '*' , 
+            element: <div className="text-center m-auto">
+                      <h3 className="fs-1">Oops!! An Error Occured. <span className="text-danger">404!</span></h3>
+                    <div className="mt-5"><h3 className="fs-3 text-danger">The page you're looking for is not Found.</h3> </div>
+                     <div className="mt-5"><Link to='/'><Button variant="dark">Let's Go back To the Home Page</Button></Link> </div>
+                     </div> }
         ] 
 
     }
