@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth.context';
 //import Font Awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,8 +13,6 @@ import { toast, ToastContainer } from 'react-toastify';
 
 
 const Login = () => {
-
-    const navigate = useNavigate();
 
     const { signIn, resetPassword , signInWithGoogle } = useContext(AuthContext);
 

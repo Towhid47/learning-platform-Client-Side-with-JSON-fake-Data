@@ -11,6 +11,7 @@ import { AuthContext } from '../../contexts/auth.context';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import CategoryList from '../Courses/CategoryList/CategoryList';
 
 
 
@@ -43,19 +44,26 @@ const Navigationbar = () => {
                                     <NavLink className="m-4 fw-semibold text-light nav-item" to="/courses">Courses</NavLink>
                                     <NavLink className="m-4 fw-semibold text-light nav-item" to="/faq">FAQ</NavLink>
                                     <NavLink className="m-4 fw-semibold text-light nav-item" to="/blog">Blog</NavLink>
+                                 
+                {/*///////////////// Conditional Rendering For Dark Mode & Light Mode Toggle////////////////////////////////  */}
+                                 {
+                                    
+                                 }
 
-                                 {/* Conditional Rendering For Login & Logout Toggle */}
+                {/*////////////// Conditional Rendering For Login & Logout Toggle //////////////////////////////////*/}
                                     {(user?.email)  ? 
                                        <> <NavLink className="m-4 fw-semibold text-light nav-item"><Button onClick={handleLogout} className='btn-light'>Logout <FontAwesomeIcon icon={faRightFromBracket} /></Button></NavLink>
                                            <Link to="" title={user.displayName} className='border border-4 border-secondary rounded ms-5'><img className='w-100' src={user.photoURL} alt=""></img></Link>  
                                        </>  
                                           :  
                                        <><NavLink className="m-4 fw-semibold text-light nav-item" to="/login">Login</NavLink></>
-                                 }
-
-                                    
-                                   
+                                 }                                   
                                 </Nav>
+                                
+                                <div className='d-lg-none'>
+                                    <CategoryList></CategoryList>
+                                </div>
+
                                 </Navbar.Collapse>
                             </Container>
                 </Navbar>
