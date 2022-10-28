@@ -22,13 +22,13 @@ export const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses></Courses>,
-        loader: () => fetch("http://localhost:5000/course"),
+        loader: () => fetch("https://cs-tutor-server.vercel.app/course"),
         children: [
           {
             path: "/courses/:id",
             element: <CourseCards></CourseCards>,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/course-category/${params.id}`),
+              fetch(`https://cs-tutor-server.vercel.app/course-category/${params.id}`),
           },
         ],
       },
@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
         path: "/course/:id",
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(`https://cs-tutor-server.vercel.app/course/${params.id}`),
       },
       { path: "/blog", element: <Blog></Blog> },
       { path: "/login", element: <Login></Login> },
@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
             <Checkout></Checkout>
           </PrivateRoute>
         ),
-        loader: ({params}) =>   fetch(`http://localhost:5000/course/${params.id}`),
+        loader: ({params}) =>   fetch(`https://cs-tutor-server.vercel.app/course/${params.id}`),
       },
       {
         path: "*",
