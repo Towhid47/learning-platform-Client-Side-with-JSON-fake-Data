@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth.context';
 //import Font Awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,6 +15,14 @@ import { toast, ToastContainer } from 'react-toastify';
 const Login = () => {
 
     const { signIn, resetPassword , signInWithGoogle } = useContext(AuthContext);
+    
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
+    console.log(location);
+
+    const navigate = useNavigate();
 
     const handleSubmit = event =>{
     
@@ -27,6 +35,7 @@ const Login = () => {
             Swal.fire(
                 'Login Success !'
               )  
+              navigate(from,{replace:true});
         })
         .catch(error => {
             toast.error("This Account isn't available. Please, Create your Account First");
@@ -43,6 +52,7 @@ const handleGoogleSignin = () =>{
     signInWithGoogle()
     .then(result => {
          console.log(result.user);
+         navigate(from,{replace:true});
     })
 }
 

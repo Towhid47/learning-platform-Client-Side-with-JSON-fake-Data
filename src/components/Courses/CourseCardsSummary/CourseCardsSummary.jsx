@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom';
 const CourseCardsSummary = ({courseSingle}) => {
     return (
         <div className=' m-5'>
+             <h1 className='my-5'>{courseSingle.course_category}</h1>
                <Card className='m-lg-5 border border-dark border-3'  style={{  width: '90%'}}>
                         <Card.Img variant="top" src={courseSingle.image} />
                         <Card.Body>
-                            <Card.Title>{courseSingle.course_title}</Card.Title>
+                            <Card.Title className='fs-3'>{courseSingle.course_title}</Card.Title>
                             <Card.Text>
                                {courseSingle.details}
                             </Card.Text>

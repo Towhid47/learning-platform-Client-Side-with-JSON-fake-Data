@@ -64,7 +64,7 @@ const Navigationbar = () => {
                                 </Nav>
 
                                   {/*///////////////// Conditional Rendering For Dark Mode & Light Mode Toggle////////////////////////////////  */}
-                                        <div onClick={()=>themeToggle(isDarkMod)} >
+                                        <div onClick={()=>themeToggle(isDarkMod)} className='ms-5' role='button'>
                                             {
                                                 (isDarkMod) ?  <FontAwesomeIcon icon={faSun} className="text-light fs-4"/> : <FontAwesomeIcon icon={faMoon} className="fs-4 text-light"/> 
                                             }

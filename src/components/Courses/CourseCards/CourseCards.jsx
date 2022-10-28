@@ -7,7 +7,8 @@ const CourseCards = () => {
 
     return (
         <div>
-            <h2 className='text-center'>{course.length} Course Available </h2>
+            <h1 className='my-5'>{course.course_title}</h1>
+            <h3 className='mt-5 text-center'>{course.length} Course Available </h3>
             {
                 course.map(singleCourse => <CourseCardsSummary
                  key={singleCourse.course_id}

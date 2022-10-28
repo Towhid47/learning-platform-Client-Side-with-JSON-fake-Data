@@ -18,17 +18,22 @@ const AuthProvider = ({ children }) => {  ///// AuthProvider is the component th
   
     const [user , setUser] = useState({});
 
+    const [loading, setLoading] = useState(true);
+
      
     // Get name , email , password from register.jsx component and send them to Firebase Authentication to Create a new user Account. 
 
 ////////Create User ///////
 const createUser = (email, password) =>{
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
 }
 
+
+
 /////// Update Name /////////
 const updateName = (name) =>{
-return updateProfile(auth.currentUser, { displayName: name   }); 
+return updateProfile(auth.currentUser, { displayName: name  }); 
 }
 
 /////// Email Verify ///////
@@ -39,18 +44,21 @@ const verifyEmail = () =>{
 //////// Google Sign In ///////
 
 const signInWithGoogle = () =>{
+    setLoading(true)
     return signInWithPopup(auth, googleProvider)
 }
 
 
 /////////// Log Out ////////////////////
  const logout = () =>{
+    setLoading(true);
     return signOut(auth);
  } 
 
 
 ////////// Log In With Email & Password ////////////
 const signIn = (email, password) =>{
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
 } 
 
@@ -68,6 +76,7 @@ const signIn = (email, password) =>{
      //This block of code will be executed when the component is mounted.
        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
             setUser(currentUser);
+            setLoading(false);
         })
 
         return ()=>{
@@ -80,7 +89,7 @@ const signIn = (email, password) =>{
 
                                                                      //   AuthContext.Provider shares the Data by value={} to its child elements.  
     return (
-     <AuthContext.Provider value={{user , setUser , createUser, updateName , verifyEmail , signInWithGoogle, logout , signIn , resetPassword }}>                
+     <AuthContext.Provider value={{user ,loading, setUser , createUser, updateName , verifyEmail , signInWithGoogle, logout , signIn , resetPassword }}>                
         { children }
     </AuthContext.Provider>
     );

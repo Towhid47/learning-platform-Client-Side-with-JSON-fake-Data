@@ -34,6 +34,9 @@ const Register = () => {
         setName(name);
     }
 
+   
+
+
     ///// Get the Email from the form email input box /////////////
     const handleEmail = (e) =>{
         const email = e.target.value;
@@ -146,7 +149,7 @@ const handleGoogleSignin = () =>{
                                     <Form.Text className="text-muted">
                                     </Form.Text>
                                 </Form.Group>
-                               
+            
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label className='fw-semibold fs-3'>Email address</Form.Label>
                                     <Form.Control type="email" onBlur={handleEmail} placeholder="Enter email" className='border border-dark border-2' required/>
