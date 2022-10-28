@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navigationbar.css';
 
 import Container from 'react-bootstrap/Container';
@@ -10,7 +10,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/auth.context';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSun } from '@fortawesome/free-solid-svg-icons';
 import CategoryList from '../Courses/CategoryList/CategoryList';
 
 
@@ -26,8 +28,14 @@ const Navigationbar = () => {
         .catch(error=> console.log(error))
       }
 
-      console.log(user);
+    ////////////// Dark Mode & Light Mode Theme Toggle event Handler ////////////////////
+       const [isDarkMod, setIsDarkMod] = useState(false);
 
+       const themeToggle = (isDarkMod) =>{
+         setIsDarkMod(!isDarkMod); 
+        console.log(!isDarkMod);
+
+       }
 
 
 
@@ -44,11 +52,6 @@ const Navigationbar = () => {
                                     <NavLink className="m-4 fw-semibold text-light nav-item" to="/courses">Courses</NavLink>
                                     <NavLink className="m-4 fw-semibold text-light nav-item" to="/faq">FAQ</NavLink>
                                     <NavLink className="m-4 fw-semibold text-light nav-item" to="/blog">Blog</NavLink>
-                                 
-                {/*///////////////// Conditional Rendering For Dark Mode & Light Mode Toggle////////////////////////////////  */}
-                                 {
-                                    
-                                 }
 
                 {/*////////////// Conditional Rendering For Login & Logout Toggle //////////////////////////////////*/}
                                     {(user?.email)  ? 
@@ -59,6 +62,17 @@ const Navigationbar = () => {
                                        <><NavLink className="m-4 fw-semibold text-light nav-item" to="/login">Login</NavLink></>
                                  }                                   
                                 </Nav>
+
+                                  {/*///////////////// Conditional Rendering For Dark Mode & Light Mode Toggle////////////////////////////////  */}
+                                        <div onClick={()=>themeToggle(isDarkMod)} >
+                                            {
+                                                (isDarkMod) ?  <FontAwesomeIcon icon={faSun} className="text-light fs-4"/> : <FontAwesomeIcon icon={faMoon} className="fs-4 text-light"/> 
+                                            }
+                                        </div>       
+
+
+
+
                                 
                                 <div className='d-lg-none'>
                                     <CategoryList></CategoryList>
@@ -67,7 +81,13 @@ const Navigationbar = () => {
                                 </Navbar.Collapse>
                             </Container>
                 </Navbar>
-                <p className='bg-dark fs-5 text-light text-end'>Dark Mod & Light Mod Toggle</p>
+        
+      
+                                    
+                                
+
+
+
         </div>
     );
 };
