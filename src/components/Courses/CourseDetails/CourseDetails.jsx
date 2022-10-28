@@ -14,24 +14,13 @@ const CourseDetails = () => {
         <Card.Img variant="top" src={detailsLoad.image} />
         <Card.Body>
           <Card.Text className="fs-4">{detailsLoad.details}</Card.Text>
-
-          {/*//////////////Conditional Rendering by Ternary Operator with Multiple Condition //////////////////////////////////////////////*/}
-          {detailsLoad.price === "free" ? (
-            <Button variant="dark" className="w-100 p-3 fs-4">
-              Get Started For Free
-            </Button>
-          ) : detailsLoad.price === "premium" ? (
             <Link to={`../../checkout/${detailsLoad.course_id}`}>
               {" "}
               <Button variant="primary" className="w-100 p-3 fs-4">
                 Get Premium Access
               </Button>
             </Link>
-          ) : (
-            <Button variant="dark" className="w-100 p-3 fs-4">
-              Get Started For Free
-            </Button>
-          )}
+        
         </Card.Body>
       </Card>
     </div>

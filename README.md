@@ -23,7 +23,7 @@ https://cs-tutor-4c624.web.app/
 - User can find Different Categories of Courses.
 - Each courses have Different topics related to it . 
 - User can Login this website through email , password .
-- We also provide gmail login option
+- We also provide Gmail login option
 - if user logged in , he can able to purchase the premium access of our paid course.
 
 
